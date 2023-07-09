@@ -1,0 +1,38 @@
+// Variables de textos
+$text-data: (
+  ('h1', 3, $font-weight-bold, $line-height-s, $font-title),
+  ('h2', 2.75, $font-weight-bold, $line-height-s, $font-title),
+  ('h3', 2.5, $font-weight-bold, $line-height-s, $font-title),
+  ('h4', 2, $font-weight-bold, $line-height-s, $font-title),
+  ('h5', 1.5, $font-weight-bold, $line-height-s, $font-title),
+  ('h6', 1.25, $font-weight-bold, $line-height-s, $font-title),
+  ('p', 1, $font-weight-regular, $line-height-base, $font-base),
+  ('.subtitle', 1.5, $font-weight-bold, $line-height-s, $font-title),
+  ('.large', 1.25, $font-weight-regular, $line-height-base, $font-base),
+  ('.small', 0.85, $font-weight-regular, $line-height-base, $font-base),
+  ('.xsmall', 0.75, $font-weight-regular, $line-height-base, $font-base),
+  ('input', 1, $font-weight-regular, $line-height-base, $font-base)
+);
+
+// Mixin de Contruccion de todos los texts.
+@mixin text-style($tag, $size, $weight, $line, $font, $spacing) {
+  #{$tag} {
+    font-size: $font-size-ratio-base * $size + rem;
+    font-family: $font;
+    line-height: $line;
+    margin: 0;
+    margin-bottom: $spacing + rem;
+    font-weight: $weight;
+  }
+}
+
+// Contruccion de todos los estilos de los Parrafos.
+@each $heading in $text-data {
+  $tag: nth($heading, 1);
+  $size: nth($heading, 2);
+  $weight: nth($heading, 3);
+  $line: nth($heading, 4);
+  $font: nth($heading, 5);
+
+  @include text-style($tag, $size, $weight, $line, $font, 1);
+}

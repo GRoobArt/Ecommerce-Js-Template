@@ -1,0 +1,27 @@
+.cart-content {
+  grid-area: minicart;
+  position: relative;
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+  > i {
+    font-size: $font-size-l;
+  }
+
+  .cart-content {
+    position: relative;
+  }
+  .count {
+    position: absolute;
+    top: -15px;
+    right: 15%;
+    font-size: $font-size-xs;
+    padding: 0.25rem;
+    border-radius: 50px;
+    min-width: calc(22px - 0.5rem);
+    display: flex;
+    justify-content: center;
+    color: $color-white;
+    background-color: $color-orange-80;
+  }
+}

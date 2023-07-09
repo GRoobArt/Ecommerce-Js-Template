@@ -1,0 +1,24 @@
+.fotograma-frames {
+  margin-bottom: 2rem;
+  position: relative;
+  .list-fotograma {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+    .fotograma-frame-nav {
+      line-height: 0;
+      overflow-x: hidden;
+
+      &.select {
+        grid-column: span 2;
+      }
+
+      .img-product {
+        aspect-ratio: 3/4;
+        object-fit: cover;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.carrusel-block {
+  list-style: none;
+  margin: 0;
+  padding: 1.2rem 0;
+  display: flex;
+  gap: 1.4rem;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+
+  .item-carrusel {
+    width: calc(100% / 5);
+    min-width: 200px;
+
+    .img-product {
+      aspect-ratio: 3/4;
+      border-radius: 1.5rem;
+      overflow: auto;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .product-info {
+      padding: 0 0 1rem 0;
+    }
+  }
+}
