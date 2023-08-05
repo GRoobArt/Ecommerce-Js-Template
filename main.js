@@ -86,6 +86,9 @@ const addProductCart = () => {
   } while (cart.qty < products.length && addProductsContinue != false)
   // console.log(cart)
   // console.log(addProductsContinue)
+  alert(
+    `Actualmente tienes ${cart.qty} productos con un total de $${cart.total}`
+  )
 }
 
 addProductCart()
