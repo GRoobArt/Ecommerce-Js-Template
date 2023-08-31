@@ -1,94 +1,201 @@
-// 1era Entrega:
+const UUID = () => {
+  let UUID = crypto.randomUUID()
+  let arrayID = UUID.split('-')
 
-/**
- * [] Crear un Algoritmo con condional.
- * [] Crear un algoritmo utilizando un ciclo.
- * [] Armar un simulador interactivo, la estructura final de tu proyecto integrador.
- */
-
-const products = [
+  return arrayID[0]
+}
+const dataProducts = [
   {
-    id: 1,
-    name: 'Tees Orange',
-    color: 'Orange',
-    size: 'L',
-    price: 26190,
+    sku: UUID(),
+    name: 'Polera',
+    price: 29990,
+    specialprice: 21990,
+    color: ['Orange', 'Red', 'Blue'],
+    size: ['S', 'M', 'L', 'XL'],
   },
   {
-    id: 2,
-    name: 'Tees Blue',
-    color: 'Blue',
-    size: 'S',
-    price: 64266,
+    sku: UUID(),
+    name: 'Poleron',
+    price: 29990,
+    specialprice: 21990,
+    color: ['Orange', 'Red', 'Blue'],
+    size: ['S', 'M', 'L', 'XL'],
   },
   {
-    id: 3,
-    name: 'Tees Teal',
-    color: 'Teal',
-    size: 'XS',
-    price: 49160,
-  },
-  {
-    id: 4,
-    name: 'Tees Khaki',
-    color: 'Khaki',
-    size: 'XS',
-    price: 81753,
-  },
-  {
-    id: 5,
-    name: 'Tees Aquamarine',
-    color: 'Aquamarine',
-    size: 'XS',
-    price: 73628,
+    sku: UUID(),
+    name: 'Camisas',
+    price: 29990,
+    specialprice: 21990,
+    color: ['Orange', 'Red', 'Blue'],
+    size: ['S', 'M', 'L', 'XL'],
   },
 ]
-
-const cart = {
-  id: 21213,
-  iduser: 12,
-  qty: 0,
-  total: 0,
-  products: [],
-}
-
-const addProductCart = () => {
-  let addProductsContinue = true
-  do {
-    let ProductColor = prompt(
-      'Cual es el color la polera que quiere comprar ? Orange | Blue | Teal | Khaki | Aquamarine'
+//* Contructorores de Objetos
+class Cart {
+  constructor(user) {
+    this.id = UUID()
+    this.user = user.id
+    this.shipping = 0
+    this.subtotal = 0
+    this.total = 0
+    this.productos = []
+  }
+  addProduct(sku) {
+    const product = listProduct.find((product) => product.sku === sku)
+    const existingProductCart = this.productos.find(
+      (product) => product.sku === sku
     )
-    let product = products.find((p) => p.color === ProductColor)
-    let existCart = cart.products.some((p) => p.color === product.color)
-
-    if (!product) {
-      alert(`El producto con el color ${ProductColor} ingresado no existe`)
-    } else if (existCart) {
-      alert(
-        `El producto con el color ${ProductColor} ya esta ingresado en el carro`
-      )
-    } else {
-      cart.products.push(product)
-      cart.qty = Number(cart.products.length)
-      cart.total += Number(product.price)
-
-      if (addProductsContinue) {
-        let continueProduct = prompt(
-          'Quieres seguir añadiendo Productos? Si | No'
-        )
-        if (continueProduct === 'Si') {
-          addProductsContinue = true
-        } else {
-          addProductsContinue = false
-        }
+    if (product) {
+      if (!existingProductCart) {
+        product.qty = 1
+        this.subtotal += parseFloat(product.price)
+        this.total += parseFloat(product.price)
+        this.productos.push(product)
+      } else {
+        product.qty += 1
       }
+    } else {
+      alert('El producto no existe')
     }
-  } while (cart.qty < products.length && addProductsContinue != false)
-  // console.log(cart)
-  // console.log(addProductsContinue)
-  alert(
-    `Actualmente tienes ${cart.qty} productos con un total de $${cart.total}`
-  )
+  }
+
+  addShipping(pais) {
+    if (pais) {
+      this.shipping = 3990
+      this.total += 3990
+    }
+  }
+}
+class User {
+  constructor({ email, name, lastname }) {
+    this.id = UUID()
+    this.email = email
+    this.name = name
+    this.lastname = lastname
+    this.fullname = `${name} ${lastname}`
+    this.group = 'invitado'
+  }
+}
+class Product {
+  constructor({ sku, name, specialprice, color, size, price }) {
+    this.variants = []
+    color.forEach((colorOption) => {
+      size.forEach((sizeOption) => {
+        const variant = {
+          sku: UUID(),
+          parent: sku,
+          name: name,
+          color: colorOption,
+          size: sizeOption,
+          price: price,
+          specialprice: specialprice,
+        }
+        this.variants.push(variant)
+      })
+    })
+  }
+}
+class listProduct {
+  constructor() {
+    this.products = []
+    this.searchProduct = []
+  }
+  postProduct(product) {
+    this.products.push(product)
+    this.searchProduct.push(product)
+  }
+
+  //? Metodo para obtener listado.
+  getNames() {
+    const allListing = this.products.map((product) => product.name)
+    const listing = [...new Set(allListing)]
+    return listing
+  }
+  getColors() {
+    const allListing = this.products.map((product) => product.color)
+    const listing = [...new Set(allListing)]
+    return listing
+  }
+  getSizes() {
+    const allListing = this.products.map((product) => product.size)
+    const listing = [...new Set(allListing)]
+    return listing
+  }
+  //? Metodos de Filtrado.
+  filterProductName(name) {
+    this.searchProduct = this.products.filter(
+      (product) => product.name.toLowerCase() === name.toLowerCase()
+    )
+  }
+  filterProductColor(color) {
+    this.searchProduct = this.products.filter(
+      (product) => product.color.toLowerCase() === color.toLowerCase()
+    )
+  }
+  filterProductSize(size) {
+    this.searchProduct = this.products.filter(
+      (product) => product.size.toLowerCase() === size.toLowerCase()
+    )
+  }
+}
+//* ---------------------------------
+
+//* Creacion de productos
+
+const newlistProduct = new listProduct()
+
+dataProducts.map((product) => {
+  const products = new Product(product)
+  products.variants.forEach((product) => {
+    newlistProduct.postProduct(product)
+  })
+})
+//* ---------------------------------
+
+console.log(newlistProduct)
+
+//* Objeto y construccion de Usuario
+const alphacaStore = () => {
+  let addProductsContinue = true
+
+  do {
+    const name = prompt('Cual es tu Nombre?')
+    const lastname = prompt('Cual es tu Apellido?')
+    const correo = prompt('Ingresa Tu Correo?')
+    const user = {
+      email: correo.toLowerCase(),
+      name: name.toLowerCase(),
+      lastname: lastname.toLowerCase(),
+    }
+    const newUser = new User(user)
+    const newCart = new Cart(newUser)
+
+    const saleCategorie = prompt(
+      `Que categoria te gustaria Comprar? ${newlistProduct.getNames()}`
+    )
+
+    console.log(saleCategorie)
+
+    newlistProduct.filterProductName(saleCategorie)
+
+    const saleColors = prompt(
+      `Que color de producto te gustaria Comprar? ${newlistProduct.getColors()}`
+    )
+
+    console.log(saleColors)
+
+    newlistProduct.filterProductColor(saleColors)
+
+    const saleSize = prompt(
+      `Que color de producto te gustaria Comprar? ${newlistProduct.getSizes()}`
+    )
+
+    console.log(saleCategorie)
+
+    newlistProduct.filterProductSize(saleSize)
+
+    addProductsContinue = false
+  } while (addProductsContinue != false)
 }
 
-addProductCart()
+alphacaStore()
