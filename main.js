@@ -40,23 +40,10 @@ class Cart {
     this.total = 0
     this.productos = []
   }
-  addProduct(sku) {
-    const product = listProduct.find((product) => product.sku === sku)
-    const existingProductCart = this.productos.find(
-      (product) => product.sku === sku
-    )
-    if (product) {
-      if (!existingProductCart) {
-        product.qty = 1
-        this.subtotal += parseFloat(product.price)
-        this.total += parseFloat(product.price)
-        this.productos.push(product)
-      } else {
-        product.qty += 1
-      }
-    } else {
-      alert('El producto no existe')
-    }
+  addProduct(product) {
+    this.total += product.price
+    this.subtotal += product.price
+    this.productos.push(product)
   }
 
   addShipping(pais) {
@@ -98,11 +85,11 @@ class Product {
 class listProduct {
   constructor() {
     this.products = []
-    this.searchProduct = []
+    this.searchProducts = []
   }
   postProduct(product) {
     this.products.push(product)
-    this.searchProduct.push(product)
+    this.searchProducts.push(product)
   }
 
   //? Metodo para obtener listado.
@@ -112,36 +99,47 @@ class listProduct {
     return listing
   }
   getColors() {
-    const allListing = this.products.map((product) => product.color)
+    const allListing = this.searchProducts.map((product) => product.color)
     const listing = [...new Set(allListing)]
     return listing
   }
   getSizes() {
-    const allListing = this.products.map((product) => product.size)
+    const allListing = this.searchProducts.map((product) => product.size)
     const listing = [...new Set(allListing)]
     return listing
   }
+
   //? Metodos de Filtrado.
+  filterProducts(filters) {
+    for (const key in filters) {
+      // console.log(filters[key])
+      this.searchProducts = this.searchProducts.filter(
+        (products) => products[key].toLowerCase() === filters[key].toLowerCase()
+      )
+    }
+  }
   filterProductName(name) {
-    this.searchProduct = this.products.filter(
+    this.searchProducts = this.searchProducts.filter(
       (product) => product.name.toLowerCase() === name.toLowerCase()
     )
   }
   filterProductColor(color) {
-    this.searchProduct = this.products.filter(
+    this.searchProducts = this.searchProducts.filter(
       (product) => product.color.toLowerCase() === color.toLowerCase()
     )
   }
   filterProductSize(size) {
-    this.searchProduct = this.products.filter(
+    this.searchProducts = this.searchProducts.filter(
       (product) => product.size.toLowerCase() === size.toLowerCase()
     )
+  }
+  filterReset() {
+    this.searchProducts = this.products
   }
 }
 //* ---------------------------------
 
 //* Creacion de productos
-
 const newlistProduct = new listProduct()
 
 dataProducts.map((product) => {
@@ -155,47 +153,63 @@ dataProducts.map((product) => {
 console.log(newlistProduct)
 
 //* Objeto y construccion de Usuario
-const alphacaStore = () => {
-  let addProductsContinue = true
+
+function alphacaStore() {
+  let isUser = false
+  let ContinueSale = true
+  let userRegisted = []
+
+  // Creamos Usuario.
+  function CreateUser() {
+    const user = {
+      name: prompt('Ingresa tu Nombre').toLowerCase(),
+      lastname: prompt('Ingresa tu Apellido').toLowerCase(),
+      email: prompt('Ingresa Tu Correo Electronico').toLowerCase(),
+    }
+    return new User(user)
+  }
 
   do {
-    const name = prompt('Cual es tu Nombre?')
-    const lastname = prompt('Cual es tu Apellido?')
-    const correo = prompt('Ingresa Tu Correo?')
-    const user = {
-      email: correo.toLowerCase(),
-      name: name.toLowerCase(),
-      lastname: lastname.toLowerCase(),
+    // Vemos si el usuario ya esta registrado.
+    if (!isUser) {
+      userRegisted = CreateUser()
+      isUser = true
     }
-    const newUser = new User(user)
-    const newCart = new Cart(newUser)
+    // Creamos Carro de compras
+    let newCart = new Cart(userRegisted)
 
-    const saleCategorie = prompt(
-      `Que categoria te gustaria Comprar? ${newlistProduct.getNames()}`
-    )
+    // BUscamos que porducto quiere comprar el Usuario
+    let filters = {
+      name: prompt(
+        `Que Producto quieres comprar? ${newlistProduct.getNames()}`
+      ),
+      color: prompt(`Que Color quieres comprar? ${newlistProduct.getColors()}`),
+      size: prompt(`Que Talla quieres comprar? ${newlistProduct.getSizes()}`),
+    }
+    newlistProduct.filterProducts(filters)
 
-    console.log(saleCategorie)
+    // Añadimos el Producto al carro.
+    newCart.addProduct(newlistProduct.searchProducts[0])
 
-    newlistProduct.filterProductName(saleCategorie)
+    // Reseteamos los filtros de los productos.
+    newlistProduct.filterReset()
 
-    const saleColors = prompt(
-      `Que color de producto te gustaria Comprar? ${newlistProduct.getColors()}`
-    )
+    const SaleAddProduct = prompt(
+      'Quieres Seguir Comprando? Si | No'
+    ).toLowerCase()
+    if (SaleAddProduct === 'no') {
+      ContinueSale = false
 
-    console.log(saleColors)
+      const countrySale = prompt('De que pasis estas comprando?')
 
-    newlistProduct.filterProductColor(saleColors)
+      newCart.addShipping(countrySale)
 
-    const saleSize = prompt(
-      `Que color de producto te gustaria Comprar? ${newlistProduct.getSizes()}`
-    )
-
-    console.log(saleCategorie)
-
-    newlistProduct.filterProductSize(saleSize)
-
-    addProductsContinue = false
-  } while (addProductsContinue != false)
+      alert(
+        `Resumen del pedido: El total de tu compra es ${newCart.total}, con una cantidad de productos ${newCart.productos.length}`
+      )
+    }
+    console.log(newCart)
+  } while (ContinueSale !== false)
 }
 
 alphacaStore()
