@@ -31,28 +31,6 @@ const dataProducts = [
   },
 ]
 //* Contructorores de Objetos
-class Cart {
-  constructor(user) {
-    this.id = UUID()
-    this.user = user.id
-    this.shipping = 0
-    this.subtotal = 0
-    this.total = 0
-    this.productos = []
-  }
-  addProduct(product) {
-    this.total += product.price
-    this.subtotal += product.price
-    this.productos.push(product)
-  }
-
-  addShipping(pais) {
-    if (pais) {
-      this.shipping = 3990
-      this.total += 3990
-    }
-  }
-}
 class User {
   constructor({ email, name, lastname }) {
     this.id = UUID()
@@ -137,6 +115,50 @@ class listProduct {
     this.searchProducts = this.products
   }
 }
+class Cart {
+  constructor(user) {
+    this.id = UUID()
+    this.user = user.id
+    this.count = 0
+    this.shipping = 0
+    this.subtotal = 0
+    this.total = 0
+    this.productos = []
+  }
+  addProduct(listproducts, product) {
+    console.log(product)
+
+    // Buscar Producto en lista de productos.
+    const findsListProduct = listproducts.find(
+      (item) => item.sku === product.sku
+    )
+    if (!findsListProduct) {
+      // ? Se podria cambiar a hacer una logica para saber si el Producto tiene la Qty necesaria.
+      alert('El producto a Añadir No existe')
+    } else {
+      // Buscar en productos del carro.
+      const findCartProducts = this.productos.find(
+        (item) => item.sku === product.sku
+      )
+      if (!findCartProducts) {
+        product.qty = 1
+        this.productos.push(product)
+      } else {
+        product.qty += 1
+      }
+      this.count += 1
+      this.subtotal += product.price
+      this.total += product.price
+    }
+  }
+
+  addShipping(pais) {
+    if (pais) {
+      this.shipping = 3990
+      this.total += 3990
+    }
+  }
+}
 //* ---------------------------------
 
 //* Creacion de productos
@@ -169,15 +191,15 @@ function alphacaStore() {
     return new User(user)
   }
 
-  do {
-    // Vemos si el usuario ya esta registrado.
-    if (!isUser) {
-      userRegisted = CreateUser()
-      isUser = true
-    }
-    // Creamos Carro de compras
-    let newCart = new Cart(userRegisted)
+  // Vemos si el usuario ya esta registrado.
+  if (!isUser) {
+    userRegisted = CreateUser()
+    isUser = true
+  }
+  // Creamos Carro de compras
+  let newCart = new Cart(userRegisted)
 
+  do {
     // BUscamos que porducto quiere comprar el Usuario
     let filters = {
       name: prompt(
@@ -189,7 +211,10 @@ function alphacaStore() {
     newlistProduct.filterProducts(filters)
 
     // Añadimos el Producto al carro.
-    newCart.addProduct(newlistProduct.searchProducts[0])
+    newCart.addProduct(
+      newlistProduct.products,
+      newlistProduct.searchProducts[0]
+    )
 
     // Reseteamos los filtros de los productos.
     newlistProduct.filterReset()
@@ -205,11 +230,11 @@ function alphacaStore() {
       newCart.addShipping(countrySale)
 
       alert(
-        `Resumen del pedido: El total de tu compra es ${newCart.total}, con una cantidad de productos ${newCart.productos.length}`
+        `Resumen del pedido: El total de tu compra es ${newCart.total}, con una cantidad de productos ${newCart.count}`
       )
     }
-    console.log(newCart)
   } while (ContinueSale !== false)
+  console.log(newCart)
 }
 
 alphacaStore()
