@@ -11,7 +11,7 @@ const contructorNav = () => {
   const itemNavHTML = navigationPages.nav
     .map(
       (page) =>
-        `<li class="item-nav"><a href="../view/${page.path}" class="link-nav">${page.name}</a></li>`
+        `<li class="item-nav"><a href="/view/${page.path}" class="link-nav">${page.name}</a></li>`
     )
     .join('')
 
@@ -24,7 +24,7 @@ const contructorNav = () => {
 // Construccion del Brand devuelve Html
 const BrandLogo = `
 <div class="item-nav">
-    <a class="link-nav" href="../index.html">
+    <a class="link-nav" href="/index.html">
         <img class="brand logo" src="${BRAND_IMAGES_PATH}${brandInfo.logo}" alt="${brandInfo.logoAlt}">
         <p class="subtitle">
             Alphaca <br> Store

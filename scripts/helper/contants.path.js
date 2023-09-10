@@ -1,5 +1,5 @@
 // Constants de Assets Path
-const ASSETS_PATH = '../../assets/'
+const ASSETS_PATH = '../assets/'
 const IMAGES_PATH = `${ASSETS_PATH}images/`
 
 // Constants de Products Path
