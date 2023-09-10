@@ -1,5 +1,7 @@
 // Constants de Assets Path
-const ASSETS_PATH = './assets/'
+const URL_PATH = window.location.origin
+const NAME_PROYECT = '/Entrega-Robert-Garcia/'
+const ASSETS_PATH = `${URL_PATH}/assets/`
 const IMAGES_PATH = `${ASSETS_PATH}images/`
 
 // Constants de Products Path
@@ -15,6 +17,8 @@ const BRAND_BANNER_PATH = `${IMAGES_PATH}banners/`
 const ICONS_PATH = `${IMAGES_PATH}icons/`
 
 export {
+  URL_PATH,
+  NAME_PROYECT,
   ASSETS_PATH,
   IMAGES_PATH,
   PRODUCT_IMAGES_PATH,

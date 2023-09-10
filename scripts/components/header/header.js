@@ -1,5 +1,10 @@
 import navigationPages from '../../../data/data.pages.js'
-import { BRAND_IMAGES_PATH, ICONS_PATH } from '../../helper/contants.path.js'
+import {
+  BRAND_IMAGES_PATH,
+  ICONS_PATH,
+  NAME_PROYECT,
+  URL_PATH,
+} from '../../helper/contants.path.js'
 import brandInfo from '../../../data/data.brand.js'
 import dataSession from '../../../data/data.controller.js'
 
@@ -24,8 +29,10 @@ const contructorNav = () => {
 // Construccion del Brand devuelve Html
 const BrandLogo = `
 <div class="item-nav">
-    <a class="link-nav" href="./">
-        <img class="brand logo" src="${BRAND_IMAGES_PATH}${brandInfo.logo}" alt="${brandInfo.logoAlt}">
+    <a class="link-nav" href="${URL_PATH + NAME_PROYECT}">
+        <img class="brand logo" src="${BRAND_IMAGES_PATH}${
+  brandInfo.logo
+}" alt="${brandInfo.logoAlt}">
         <p class="subtitle">
             Alphaca <br> Store
         </p>
