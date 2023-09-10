@@ -24,7 +24,7 @@ const contructorNav = () => {
 // Construccion del Brand devuelve Html
 const BrandLogo = `
 <div class="item-nav">
-    <a class="link-nav" href="/index.html">
+    <a class="link-nav" href="./">
         <img class="brand logo" src="${BRAND_IMAGES_PATH}${brandInfo.logo}" alt="${brandInfo.logoAlt}">
         <p class="subtitle">
             Alphaca <br> Store
