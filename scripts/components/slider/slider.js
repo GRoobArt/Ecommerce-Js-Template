@@ -15,7 +15,9 @@ const construcctorSlider = ({ name, desc }) => {
                     <h4>${name}</h4>
                     <p>${desc}</p>
                 </div>
-                <a href="categorie.html" class="link s">Ver Todo</a>
+                <a href="${
+                  URL_PATH + NAME_PROYECT
+                }/view/categorie.html" class="link s">Ver Todo</a>
             </div>
         </article>
     `
