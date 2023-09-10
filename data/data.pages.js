@@ -1,8 +1,7 @@
 const navigationPages = {
-  home: [{ path: './index.html', component: 'homePage' }],
+  home: [{ path: 'index.html', component: 'homePage' }],
   nav: [
-    { path: './categorie.html', component: 'categoriePage', name: 'Categorie' },
-    { path: './product.html', component: 'productPage', name: 'Product' },
+    { path: 'categorie.html', component: 'categoriePage', name: 'Categories' },
   ],
   cart: [{ path: '/cart', component: 'cartPage' }],
 }

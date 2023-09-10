@@ -15,7 +15,7 @@ const constructCarrusel = (products) => {
     .map(({ parent, sku, name, img, price }) => {
       const productHTML = `
         <li id="${parent}-${sku}" class="item-carrusel">
-          <a href="./product.html">
+          <a href="../view/product.html">
             <img loading="lazy" src="${PRODUCT_IMAGES_PATH}${img}-1.jpg"
                 alt="${name}" class="img-product">
             <div>
