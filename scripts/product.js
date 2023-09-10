@@ -48,6 +48,14 @@ colors.map((color) => {
   selectsColor.innerHTML += ` <option ${colorSelect} value="${color}">${color}</option>`
 })
 
+const sizeSelect = document.querySelector('.size select')
+const sizesParent = parentSelect.map((products) => products.size)
+const sizes = [...new Set(sizesParent)]
+
+sizes.map((size) => {
+  sizeSelect.innerHTML += ` <option ${sizeSelect} value="${size}">${size}</option>`
+})
+
 let colorOptionSelect
 
 // Actualizar Imagenes al cambiar de color
@@ -75,6 +83,7 @@ buttonAddCart.addEventListener('click', (e) => {
 
   // Obtenermos el sku a añadir
   skuSelect = parentSelect.filter((item) => item.size === sizeOptionSelect)
+
   skuSelect = skuSelect.filter((item) => item.color === colorOptionSelect)
 
   // Obtenemos la lista de Productos de la categoria.

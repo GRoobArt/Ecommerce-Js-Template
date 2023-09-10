@@ -29,7 +29,7 @@ productColorsFilter.map(({ name, price, img, sku, parent }) => {
                     alt="${name}" class="img-product">
                 <div class="product-info">
                     <h5 class="name-product">${name}</h5>
-                    <div class="price-box"><span class="price">${price}</span></div>
+                    <div class="price-box"><span class="price">$${price}</span></div>
                 </div>
             </a>
         </li>

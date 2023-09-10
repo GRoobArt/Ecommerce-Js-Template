@@ -78,6 +78,4 @@ document.addEventListener('scroll', (e) => {
   }
 })
 
-console.log(header)
-
 export default contructorHeader

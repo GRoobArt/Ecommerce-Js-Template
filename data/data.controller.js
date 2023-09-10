@@ -18,20 +18,34 @@ let catalogeProduct
 
 // Si no esta logeado
 if (!localUser && !localCart && !localCategorie) {
+  console.log('Entro por pirmera vez')
+
   userSession = new User()
   cartSession = new Cart()
   catalogeProduct = new listProduct()
 
   createdInsertProducts()
 } else if (!localUser && !localCart && localCategorie) {
+  console.log('Ya habia entrado pero no comprado ni Registrado')
+
   userSession = new User()
   cartSession = new Cart()
   catalogeProduct = new listProduct(JSON.parse(localCategorie).products)
 } else if (!localUser && localCart && localCategorie) {
+  console.log('Ya habia entrado pero no Registrado')
+
   userSession = new User()
   cartSession = new Cart(JSON.parse(localCart))
   catalogeProduct = new listProduct(JSON.parse(localCategorie).products)
+} else if (localUser && !localCart && localCategorie) {
+  console.log('Ya habia entrado no comprado y Registrado')
+
+  userSession = new User(JSON.parse(localUser))
+  cartSession = new Cart()
+  catalogeProduct = new listProduct(JSON.parse(localCategorie).products)
 } else if (localUser && localCart && localCategorie) {
+  console.log('Ya habia entrado comprado y Registrado')
+
   userSession = new User(JSON.parse(localUser))
   cartSession = new Cart(JSON.parse(localCart))
   catalogeProduct = new listProduct(JSON.parse(localCategorie).products)

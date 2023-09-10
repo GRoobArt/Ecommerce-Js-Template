@@ -32,22 +32,6 @@ const constructCarrusel = (products) => {
     })
     .join('')
 
-  const itemCarrusel = document.querySelectorAll('.item-carrusel')
-  itemCarrusel.forEach((item) => {
-    item.addEventListener('click', () => {
-      const id = item.getAttribute('id')
-      const parent = id.split('-')[0]
-      const sku = id.split('-')[1]
-
-      const ProductSelect = {
-        sku: sku,
-        parent: parent,
-      }
-
-      localStorage.setItem('product', JSON.stringify(ProductSelect))
-    })
-  })
-
   const carruselHTML = `
     <ul class="carrusel-block">
         ${ListProduct}

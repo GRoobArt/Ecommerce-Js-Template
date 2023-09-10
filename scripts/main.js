@@ -27,6 +27,25 @@ if (carrusel) {
   })
 }
 
+const itemCarrusel = document.querySelectorAll('.item-carrusel')
+console.log(itemCarrusel)
+itemCarrusel.forEach((item) => {
+  item.addEventListener('click', () => {
+    const id = item.getAttribute('id')
+    const parent = id.split('-')[0]
+    const sku = id.split('-')[1]
+
+    const ProductSelect = {
+      sku: sku,
+      parent: parent,
+    }
+
+    console.log(ProductSelect)
+
+    localStorage.setItem('product', JSON.stringify(ProductSelect))
+  })
+})
+
 // Contruccion del Slider
 const slider = document.getElementById('slider-principal')
 if (slider) {
