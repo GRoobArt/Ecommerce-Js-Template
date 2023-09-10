@@ -1,5 +1,9 @@
 import dataSession from '../data/data.controller.js'
-import { PRODUCT_IMAGES_PATH } from './helper/contants.path.js'
+import {
+  PRODUCT_IMAGES_PATH,
+  NAME_PROYECT,
+  URL_PATH,
+} from './helper/contants.path.js'
 
 const totalProduct = document.querySelectorAll('.qty-product')
 
@@ -25,7 +29,9 @@ productColorsFilter.map(({ name, price, img, sku, parent }) => {
   const itemHTML = `
         <li id="${parent}-${sku}" class="product">
             <a href="product.html" class="link">
-                <img src="${PRODUCT_IMAGES_PATH + img}-1.jpg"
+                <img src="${
+                  URL_PATH + NAME_PROYECT + PRODUCT_IMAGES_PATH + img
+                }-1.jpg"
                     alt="${name}" class="img-product">
                 <div class="product-info">
                     <h5 class="name-product">${name}</h5>

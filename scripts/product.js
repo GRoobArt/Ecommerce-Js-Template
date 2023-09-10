@@ -1,5 +1,9 @@
 import dataSession from '../data/data.controller.js'
-import { PRODUCT_IMAGES_PATH } from './helper/contants.path.js'
+import {
+  PRODUCT_IMAGES_PATH,
+  URL_PATH,
+  NAME_PROYECT,
+} from './helper/contants.path.js'
 
 const ProductSelect = JSON.parse(localStorage.getItem('product'))
 
@@ -29,7 +33,12 @@ for (let i = 1; i <= 5; i++) {
   fotogramasProducts.innerHTML += `
         <li class="fotograma-frame-nav ${select}">
             <img class="img-product"
-                src="${PRODUCT_IMAGES_PATH + skuSelect[0].img}-${i}.jpg"
+                src="${
+                  URL_PATH +
+                  NAME_PROYECT +
+                  PRODUCT_IMAGES_PATH +
+                  skuSelect[0].img
+                }-${i}.jpg"
                 alt="${skuSelect[0].name}">
         </li>
     `
