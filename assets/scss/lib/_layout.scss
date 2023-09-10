@@ -1,0 +1,87 @@
+$mobile: 480px;
+$table: 767px;
+$desktop: 1024px;
+
+$spacing-desktop: 40px;
+$spacing-table: 24px;
+$spacing-mobile: 15px;
+
+// Generador de @medias.
+@mixin screenQuery($type, $width) {
+  @if $type == 'min' {
+    @media (min-width: $width) {
+      @content;
+    }
+  } @else if $type == 'max' {
+    @media (max-width: $width) {
+      @content;
+    }
+  } @else {
+    @error 'El Tipo tiene que ser "max" o "min"';
+  }
+}
+
+@mixin calcWidth($type) {
+  $spacing: 0;
+  @if $type == 'desktop' {
+    $spacing: $spacing-desktop;
+  } @else if $type == 'table' {
+    $spacing: $spacing-table;
+  } @else if $type == 'mobile' {
+    $spacing: $spacing-mobile;
+  } @else {
+    @error 'Ingresa: desktop | table | mobile';
+  }
+
+  width: calc(100% - $spacing * 2);
+}
+
+// Containers
+.container-alp {
+  // mobile
+  @include screenQuery('max', $table) {
+    padding: 0.5rem $spacing-mobile;
+    max-width: auto;
+  }
+
+  // Table
+  @include screenQuery('min', $table) {
+    padding: 0.5rem $spacing-table;
+  }
+
+  // Desktop
+  @include screenQuery('min', $desktop) {
+    padding: 0.5rem $spacing-desktop;
+    max-width: 1920px;
+  }
+}
+
+.container-alp-fluid {
+  padding: auto;
+}
+
+// Generador de Grid
+@mixin rowsLayout($type, $direccion, $colums, $gap, $vertical, $horizontal) {
+  display: $type;
+  @if $type == 'flex' {
+    justify-content: $horizontal;
+    align-items: $vertical;
+    @if $colums > 1 {
+      @include screenQuery('max', $desktop) {
+        flex-direction: $direccion;
+        gap: $gap;
+      }
+    } @else {
+      > * {
+        width: calc(100% / $colums - $gap);
+      }
+    }
+  } @else if $type == 'grid' {
+    align-items: $vertical;
+    justify-items: $horizontal;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(calc(1440px / $colums - $gap), 1fr)
+    );
+  }
+}

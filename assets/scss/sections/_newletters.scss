@@ -1,0 +1,63 @@
+.newletters {
+  display: flex;
+  gap: 1.2rem;
+  align-content: center;
+  align-items: center;
+
+  .banner-newletters {
+    max-width: 55%;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      border-radius: 1.5rem;
+    }
+  }
+
+  .form-newletter {
+    max-width: 35%;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  #forms-newletters {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  // Table
+  @include screenQuery('max', $desktop) {
+    & {
+      padding: 2rem 0;
+    }
+
+    .banner-newletters {
+      display: none;
+      img {
+        object-fit: cover;
+        height: 100%;
+        border-radius: 1.5rem;
+      }
+    }
+
+    .form-newletter {
+      max-width: 50%;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  // Mobile
+  @include screenQuery('max', $mobile) {
+    .banner-newletters {
+      display: none;
+    }
+
+    .form-newletter {
+      max-width: 100%;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+}

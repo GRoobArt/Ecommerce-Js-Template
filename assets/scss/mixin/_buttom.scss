@@ -1,0 +1,127 @@
+// Variables de Tamaños de Botones
+$button-size: ('xs', 0.72, 0.25), ('s', 0.86, 0.5), ('xl', 1.2, 1.5);
+
+// Variables de Botones informacion Class, Backgound, Color, Hover.
+$button-style: ('primary', $primary-color, $color-white, $hover-color),
+  ('secondary', $secondary-color, $color-white, $primary-color),
+  ('link', $primary-color, $primary-color, $hover-color);
+
+// Contruccion del mixin para crear los Botones
+@mixin typeButton($name, $bgColor, $textColor, $hover) {
+  $fontSize: $font-size-ratio-base;
+
+  // Generacion de Clases de TIpos de Botones.
+  #{'&.' + $name} {
+    font-size: $fontSize + rem;
+    color: $textColor;
+    display: inline-block;
+    margin: 0;
+    border: none;
+    line-height: 150%;
+    padding: 1rem 2rem;
+
+    // Si es Link
+    @if $name == 'link' {
+      text-decoration: underline;
+      background-color: transparent;
+      font-weight: $font-weight-bold;
+      &:hover {
+        color: $hover;
+      }
+    } @else if $name == 'action' {
+      text-decoration: none;
+    } @else if $name == 'link-nav' {
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      &:hover {
+        color: $hover;
+      }
+    } @else {
+      background-color: $bgColor;
+      text-decoration: none;
+      text-align: center;
+      &:hover {
+        background-color: $hover;
+      }
+    }
+
+    // Si tienen Icono
+    &.icon {
+      display: inline-block;
+      min-width: auto;
+      > * {
+        line-height: 150%;
+        margin-right: 1.2rem;
+      }
+    }
+
+    // Generacion de Clases por los tamaños.
+    @each $size in $button-size {
+      $tag: nth($size, 1);
+      $font: nth($size, 2);
+      $Spacing: nth($size, 3);
+
+      #{'&.' + $tag} {
+        font-size: $fontSize * $font + rem;
+        @if $tag == 'xs' {
+          padding: $Spacing + rem calc($Spacing * 2) + rem;
+          &.icon {
+            > * {
+              margin-right: $Spacing + rem;
+            }
+          }
+        } @else if $tag == 's' {
+          padding: $Spacing + rem $Spacing * 2 + rem;
+          &.icon {
+            > * {
+              margin-right: $Spacing + rem;
+            }
+          }
+        } @else {
+          padding: $Spacing + rem $Spacing * 2 + rem;
+          &.icon {
+            > * {
+              margin-right: $Spacing + rem;
+            }
+          }
+        }
+      }
+    }
+
+    // Generacion de 100% de Ancho.
+    &.fill {
+      width: -webkit-fill-available;
+    }
+  }
+}
+
+a,
+input[type='button'],
+input[type='submit'],
+input[type='reset'],
+button {
+  &.button {
+    @each $button in $button-style {
+      $class: nth($button, 1);
+      $background: nth($button, 2);
+      $color: nth($button, 3);
+      $hover: nth($button, 4);
+
+      @include typeButton($class, $background, $color, $hover);
+    }
+  }
+  @include typeButton('link', $primary-color, $primary-color, $hover-color);
+  &.link {
+    min-width: auto;
+    display: inline-block;
+    padding: 0;
+    &.xs,
+    &.s,
+    &.xl {
+      padding: 0;
+    }
+  }
+  @include typeButton('action', $primary-color, $primary-color, $primary-color);
+
+  @include typeButton('link-nav', $primary-color, $primary-color, $hover-color);
+}

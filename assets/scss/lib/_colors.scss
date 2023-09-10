@@ -1,0 +1,40 @@
+// Base Color
+
+$color-black: #1a1a1a;
+$color-white: #f1f1f1;
+
+// Gray scale
+
+$color-gray-100: #eaeaea;
+$color-gray-200: #d6d6d6;
+$color-gray-300: #bfbfbf;
+$color-gray-400: #a6a6a6;
+$color-gray-500: #8b8b8b;
+$color-gray-600: #707070;
+$color-gray-700: #555555;
+$color-gray-800: #3a3a3a;
+$color-gray-900: #1f1f1f;
+
+// Blue Scale
+
+$color-blue-80: #006bb4;
+$color-blue-60: #1979c3;
+$color-blue-40: #00699d;
+$color-blue-20: #68a8e0;
+
+// Orange Scale
+
+$color-orange-80: #ff5501;
+$color-orange-60: #ff5601;
+$color-orange-40: #ff5700;
+$color-orange-20: #fc5e10;
+
+// Theme Colors
+
+$primary-color: $color-black;
+$secondary-color: $color-blue-80;
+
+$link-color: $primary-color;
+$hover-color: $color-orange-80;
+$active-color: $primary-color;
+$warning-color: $color-black;

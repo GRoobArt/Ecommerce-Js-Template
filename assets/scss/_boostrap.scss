@@ -1,0 +1,14 @@
+// Problemas de compatibilidad con Boostrap
+
+.page-about,
+.page-contact {
+  .header {
+    width: 100%;
+  }
+
+  .footer {
+    .registro {
+      width: 100%;
+    }
+  }
+}

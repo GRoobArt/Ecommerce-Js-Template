@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/brand/icon-17.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alphaca Tradional | Shoes, Tops, Botton </title>
+
+    <!-- *SEO-->
+    <meta name="description"
+        content="Descubre nuestra exclusiva colección de ropa de alpaca. Encuentra prendas elegantes y cómodas para hombres y mujeres, con los beneficios naturales de esta suave y cálida fibra. Compra en línea y disfruta de envío rápido y garantía de satisfacción.">
+    <meta name="keywords"
+        content="Ropa de alpaca, Moda de alpaca, Suéteres de alpaca, Prendas de alpaca, Ropa elegante de alpaca, Moda sostenible de alpaca">
+
+    <!-- *Styles-->
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <!-- *Scripts-->
+    <script rel="preload" type="module" src="../scripts/main.js" defer></script>
+    <script rel="preload" type="module" src="../scripts/user.js" defer></script>
+    <script rel="preconnect" src="https://kit.fontawesome.com/3a008ef3f0.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="header" class="header header-content container-alp"></header>
+
+    <!-- ? Contenido Page-->
+    <main id="homepage">
+
+        <!-- ? Slider-->
+        <section id="slider-principal" class="slider slider-page container-alp-fluid"></section>
+
+        <h1 class="container-alp">Alphaca Store</h1>
+
+        <!--? Carrusel de Products-->
+        <section id="t-shirt" class="carrusel products container-alp"></section>
+
+        <!-- ? Newletters-->
+        <section id="login" class="container-alp">
+            <article class="newletters">
+                <div class="banner-newletters">
+                    <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                        alt="">
+                </div>
+                <div class="form-login">
+                    <h3>Unete y se un Alphaca User</h3>
+                    <form action="" method="post" id="form-login" autocomplete="off">
+                        <fieldset>
+                            <label for="firstname" class="required">
+                                <span>nombre </span>
+                                <input name="firstname" type="text" placeholder="nombre" required>
+                            </label>
+                            <label for="lastname" class="required">
+                                <span>apellido </span>
+                                <input name="lastname" type="text" placeholder="apellido" required>
+                            </label>
+                        </fieldset>
+                        <label for="email" class="required">
+                            <span>correo eléctronico </span>
+                            <input type="email" name="email" placeholder="correo@electronico.com" required>
+                        </label>
+                        <fieldset>
+                            <label for="gender" class="required">
+                                <span>genero </span>
+                                <select name="gender" required>
+                                    <option value="null" disabled selected>Selecciona tu Genero</option>
+                                    <option value="mujer">mujer</option>
+                                    <option value="mujer">hombre</option>
+                                    <option value="otros">otros</option>
+                                </select>
+                            </label>
+                            <label for="birthday" class="required">
+                                <span>cumpleaños </span>
+                                <input type="datetime" name="birthday" placeholder="DD/MM/YYYY" required>
+                            </label>
+                        </fieldset>
+                        <input type="submit" value="Unirme" class="button primary fill">
+                    </form>
+                </div>
+            </article>
+        </section>
+
+        <!--? Carrusel de Products-->
+        <section id="sweatshirt" class="carrusel products container-alp"></section>
+        <section id="pants" class="carrusel products container-alp"></section>
+
+    </main>
+</body>
+
+</html>
