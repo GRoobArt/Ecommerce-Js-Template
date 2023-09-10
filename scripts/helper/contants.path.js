@@ -1,7 +1,8 @@
 // Constants de Assets Path
 const URL_PATH = window.location.origin
-const NAME_PROYECT = '/Entrega-Robert-Garcia/'
-const ASSETS_PATH = `${URL_PATH}/assets/`
+const NAME_PROYECT =
+  URL_PATH === 'http://127.0.0.1:5500' ? '' : '/Entrega-Robert-Garcia'
+const ASSETS_PATH = `/assets/`
 const IMAGES_PATH = `${ASSETS_PATH}images/`
 
 // Constants de Products Path

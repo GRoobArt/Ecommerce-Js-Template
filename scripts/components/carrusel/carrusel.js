@@ -1,4 +1,8 @@
-import { PRODUCT_IMAGES_PATH } from '../../helper/contants.path.js'
+import {
+  PRODUCT_IMAGES_PATH,
+  URL_PATH,
+  NAME_PROYECT,
+} from '../../helper/contants.path.js'
 
 const constructCarrusel = (products) => {
   const colorsSeen = {}
@@ -15,8 +19,10 @@ const constructCarrusel = (products) => {
     .map(({ parent, sku, name, img, price }) => {
       const productHTML = `
         <li id="${parent}-${sku}" class="item-carrusel">
-          <a href="../view/product.html">
-            <img loading="lazy" src="${PRODUCT_IMAGES_PATH}${img}-1.jpg"
+          <a href="${URL_PATH + NAME_PROYECT}/view/product.html">
+            <img loading="lazy" src="${
+              URL_PATH + NAME_PROYECT + PRODUCT_IMAGES_PATH
+            }${img}-1.jpg"
                 alt="${name}" class="img-product">
             <div>
                 <h5 class="name-product">${name}</h5>

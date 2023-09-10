@@ -16,7 +16,9 @@ const contructorNav = () => {
   const itemNavHTML = navigationPages.nav
     .map(
       (page) =>
-        `<li class="item-nav"><a href="/view/${page.path}" class="link-nav">${page.name}</a></li>`
+        `<li class="item-nav"><a href="${URL_PATH + NAME_PROYECT}/view/${
+          page.path
+        }" class="link-nav">${page.name}</a></li>`
     )
     .join('')
 
@@ -30,9 +32,9 @@ const contructorNav = () => {
 const BrandLogo = `
 <div class="item-nav">
     <a class="link-nav" href="${URL_PATH + NAME_PROYECT}">
-        <img class="brand logo" src="${BRAND_IMAGES_PATH}${
-  brandInfo.logo
-}" alt="${brandInfo.logoAlt}">
+        <img class="brand logo" src="${
+          URL_PATH + NAME_PROYECT + BRAND_IMAGES_PATH + brandInfo.logo
+        }" alt="${brandInfo.logoAlt}">
         <p class="subtitle">
             Alphaca <br> Store
         </p>
@@ -54,7 +56,9 @@ const contructorCart = () => {
 // Construccion del LogOut devuelve Html
 const buttonLogOut = () => {
   const buttonHTML = ` 
-      <button class="button logout icon"><img src="${ICONS_PATH}user-logout.svg" alt="LogOut"></button>
+      <button class="button logout icon"><img src="${
+        URL_PATH + NAME_PROYECT + ICONS_PATH
+      }user-logout.svg" alt="LogOut"></button>
     `
   return buttonHTML
 }
