@@ -15,7 +15,7 @@ class Data {
   }
 
   getCategorie() {
-    return this.categories
+    return this.categorie
   }
 
   postUser() {

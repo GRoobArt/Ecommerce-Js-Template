@@ -19,14 +19,11 @@ cartHTML.querySelector(
 
 // construccion del carruseles
 const carrusel = document.querySelectorAll('.carrusel.products')
+
 if (carrusel) {
   // Aplicamos los productos a los carruseles filtrados por cagetoria.
   carrusel.forEach((carrusel) => {
-    const categorie = carrusel.getAttribute('id')
-    const productFilter = dataSession.categorie.products.filter(
-      (product) => product.categorie === categorie
-    )
-    carrusel.innerHTML = constructCarrusel(productFilter)
+    carrusel.innerHTML = constructCarrusel(dataSession.categorie.products)
   })
 }
 
