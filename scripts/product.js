@@ -79,6 +79,25 @@ colorSelect.addEventListener('change', function (e) {
   location.reload()
 })
 
+// Alert
+const modalAddProductSucces = () => {
+  Swal.fire({
+    title: 'Producto añadido al carrito',
+    icon: 'success',
+    confirmButtonText: 'Aceptar',
+    customClass: {
+      confirmButton: 'button primary fill',
+    },
+    showClass: {
+      popup: 'animate__animated animate__fadeInDown',
+    },
+    hideClass: {
+      popup: 'animate__animated animate__fadeOutUp',
+    },
+    timer: 1500,
+  })
+}
+
 //Añadiremos al carro:
 const buttonAddCart = document.querySelector('.button.addtocart')
 buttonAddCart.addEventListener('click', (e) => {
@@ -101,5 +120,10 @@ buttonAddCart.addEventListener('click', (e) => {
   dataSession.cart.addProduct(listProducts, skuSelect[0])
 
   dataSession.postCart()
-  location.reload()
+
+  modalAddProductSucces()
+
+  setTimeout(() => {
+    location.reload()
+  }, '2000')
 })

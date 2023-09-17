@@ -57,6 +57,7 @@ button.button.primary {
   color: #f1f1f1;
   display: inline-block;
   margin: 0;
+  font-family: "Montserrat", sans-serif;
   border: none;
   line-height: 150%;
   padding: 1rem 2rem;
@@ -148,6 +149,7 @@ button.button.secondary {
   color: #f1f1f1;
   display: inline-block;
   margin: 0;
+  font-family: "Montserrat", sans-serif;
   border: none;
   line-height: 150%;
   padding: 1rem 2rem;
@@ -239,6 +241,7 @@ button.button.link {
   color: #1a1a1a;
   display: inline-block;
   margin: 0;
+  font-family: "Montserrat", sans-serif;
   border: none;
   line-height: 150%;
   padding: 1rem 2rem;
@@ -330,6 +333,7 @@ button.link {
   color: #1a1a1a;
   display: inline-block;
   margin: 0;
+  font-family: "Montserrat", sans-serif;
   border: none;
   line-height: 150%;
   padding: 1rem 2rem;
@@ -445,6 +449,7 @@ button.action {
   color: #1a1a1a;
   display: inline-block;
   margin: 0;
+  font-family: "Montserrat", sans-serif;
   border: none;
   line-height: 150%;
   padding: 1rem 2rem;
@@ -527,6 +532,7 @@ button.link-nav {
   color: #1a1a1a;
   display: inline-block;
   margin: 0;
+  font-family: "Montserrat", sans-serif;
   border: none;
   line-height: 150%;
   padding: 1rem 2rem;
@@ -1007,6 +1013,73 @@ label {
   background-color: #ff5501;
 }
 
+.minicart .minicart-popup .minicart-title {
+  text-align: left;
+  font-size: 1.75rem;
+}
+.minicart .minicart-popup .minicart-container .list-minicart {
+  max-height: 500px;
+  overflow-y: auto;
+}
+.minicart .minicart-popup .minicart-container .list-minicart .item-minicart {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0.5rem;
+}
+.minicart .minicart-popup .minicart-container .list-minicart .item-minicart:not(:first-child) {
+  border-top: 1px solid #eaeaea;
+}
+.minicart .minicart-popup .minicart-container .list-minicart .item-minicart .block-info {
+  display: flex;
+  justify-content: start;
+  gap: 1.2rem;
+}
+.minicart .minicart-popup .minicart-container .list-minicart .item-minicart .block-info .img-product {
+  max-width: 100px;
+  aspect-ratio: 3/4;
+}
+.minicart .minicart-popup .minicart-container .list-minicart .item-minicart .block-info .img-product img {
+  object-fit: cover;
+}
+.minicart .minicart-popup .minicart-container .list-minicart .item-minicart .block-info .info-product {
+  text-align: left;
+}
+.minicart .minicart-popup .minicart-container .list-minicart .item-minicart .block-info .info-product .name,
+.minicart .minicart-popup .minicart-container .list-minicart .item-minicart .block-info .info-product .price {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.minicart .minicart-popup .minicart-container .list-minicart .item-minicart .block-info .info-product > p {
+  font-size: 1.05rem;
+}
+.minicart .minicart-popup .minicart-container .list-minicart .item-minicart .action-delete {
+  font-size: 1.4rem;
+}
+.minicart .minicart-popup .minicart-container .resument-minicart {
+  list-style: none;
+  padding: 0;
+  padding-top: 1rem;
+  font-size: 1.4rem;
+  border-top: 1px solid #eaeaea;
+  margin: 0;
+  text-align: left;
+  font-weight: 700;
+}
+.minicart .minicart-popup .minicart-container .resument-minicart .list-item {
+  display: flex;
+  justify-content: space-between;
+}
+.minicart .minicart-popup .minicart-container .resument-minicart .tag {
+  font-weight: 400;
+}
+.minicart .minicart-popup .minicart-actions {
+  margin: 0.8em 1em 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: stretch;
+}
+
 .info-block {
   position: absolute;
   padding: 2rem 4rem;
@@ -1339,10 +1412,6 @@ label {
     display: none;
   }
   .page-product .head-info {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
     padding: 1rem 2rem;
   }
   .page-product .head-info .form-product {
@@ -1367,6 +1436,15 @@ label {
     display: none;
   }
   .page-product .desktop {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 2rem);
+    padding: 0.5rem 1rem;
+  }
+  .page-product .desktop .name-product,
+  .page-product .desktop .price,
+  .page-product .desktop .cuotas {
     display: none;
   }
 }

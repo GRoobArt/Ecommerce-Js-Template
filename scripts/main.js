@@ -1,6 +1,7 @@
 import contructorHeader from './components/header/header.js'
 import constructCarrusel from './components/carrusel/carrusel.js'
 import construcctorSlider from './components/slider/slider.js'
+import constructorMinicart from './components/minicart/minicart.js'
 import dataCategorie from '../data/data.categorie.js'
 import dataSession from '../data/data.controller.js'
 
@@ -28,7 +29,6 @@ if (carrusel) {
 }
 
 const itemCarrusel = document.querySelectorAll('.item-carrusel')
-console.log(itemCarrusel)
 itemCarrusel.forEach((item) => {
   item.addEventListener('click', () => {
     const id = item.getAttribute('id')
@@ -39,9 +39,6 @@ itemCarrusel.forEach((item) => {
       sku: sku,
       parent: parent,
     }
-
-    console.log(ProductSelect)
-
     localStorage.setItem('product', JSON.stringify(ProductSelect))
   })
 })
@@ -53,3 +50,26 @@ if (slider) {
     slider.innerHTML += construcctorSlider(categorie)
   })
 }
+
+const productsMinicart = dataSession.cart
+const minicartButton = document.querySelector('.cart-content')
+
+minicartButton.addEventListener('click', () => {
+  constructorMinicart(productsMinicart)
+
+  const deleteProduct = document.querySelectorAll('.action-delete')
+  deleteProduct.forEach((item) => {
+    item.addEventListener('click', () => {
+      const sku = item.parentNode.getAttribute('id')
+      const product = dataSession.cart.getProduct(sku)
+
+      console.log(product)
+
+      dataSession.cart.deteleProduct(product)
+
+      dataSession.postCart()
+
+      location.reload()
+    })
+  })
+})

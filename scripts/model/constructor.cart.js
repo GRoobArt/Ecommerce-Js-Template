@@ -34,11 +34,10 @@ export default class Cart {
         product.qty = 1
         this.productos.push(product)
       } else {
-        product.qty += 1
+        findCartProducts.qty += 1
       }
       this.count += 1
-      this.subtotal +=
-        product.specialprice > 0 ?? product.specialprice | product.price
+      this.subtotal += product.price
       this.total += product.price
     }
   }
@@ -48,5 +47,27 @@ export default class Cart {
       this.shipping = 3990
       this.total += 3990
     }
+  }
+
+  deleteProducts() {
+    this.subtotal = 0
+    this.total = 0
+    this.count = 0
+    this.productos = []
+  }
+
+  deteleProduct(product) {
+    this.subtotal -= product.price * product.qty
+    this.total -= product.price * product.qty
+    this.count -= product.qty
+    this.productos = this.productos.filter((item) => item.sku !== product.sku)
+  }
+
+  getProduct(sku) {
+    return this.productos.find((item) => item.sku === sku)
+  }
+
+  getProducts() {
+    return this.productos
   }
 }

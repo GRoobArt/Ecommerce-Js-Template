@@ -109,10 +109,6 @@
     }
 
     .head-info {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
       padding: 1rem 2rem;
 
       .form-product {
@@ -142,7 +138,17 @@
     }
 
     .desktop {
-      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: calc(100% - 2rem);
+      padding: 0.5rem 1rem;
+
+      .name-product,
+      .price,
+      .cuotas {
+        display: none;
+      }
     }
   }
 }

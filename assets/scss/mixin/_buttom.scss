@@ -16,6 +16,7 @@ $button-style: ('primary', $primary-color, $color-white, $hover-color),
     color: $textColor;
     display: inline-block;
     margin: 0;
+    font-family: $font-base;
     border: none;
     line-height: 150%;
     padding: 1rem 2rem;

@@ -3,13 +3,11 @@
   "dependencies": {
     "sass": "^1.63.6"
   },
-  "description": "",
   "license": "ISC",
-  "name": "4ta-entrega-final",
+  "name": "@template/ecommerce",
   "scripts": {
     "sass": "sass ./assets/style.scss ./assets/style.css",
-    "sass:watch": "sass --watch ./assets/style.scss ./assets/style.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sass:watch": "sass --watch ./assets/style.scss ./assets/style.css"
   },
   "version": "1.0.0"
 }
