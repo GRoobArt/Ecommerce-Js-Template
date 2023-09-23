@@ -100,3 +100,14 @@
     padding: 1rem 2rem;
   }
 }
+
+// Mobile
+@include screenQuery('max', $table) {
+  #cart {
+    &.page-cart {
+      .products-carts {
+        flex: 1 1 100%;
+      }
+    }
+  }
+}

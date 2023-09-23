@@ -1018,7 +1018,7 @@ label {
   font-size: 1.75rem;
 }
 .minicart .minicart-popup .minicart-container .list-minicart {
-  max-height: 500px;
+  max-height: 420px;
   overflow-y: auto;
 }
 .minicart .minicart-popup .minicart-container .list-minicart .item-minicart {
@@ -1544,6 +1544,11 @@ label {
   padding: 1rem 2rem;
 }
 
+@media (max-width: 767px) {
+  #cart.page-cart .products-carts {
+    flex: 1 1 100%;
+  }
+}
 .page-about .header,
 .page-contact .header {
   width: 100%;
