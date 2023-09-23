@@ -63,13 +63,20 @@ minicartButton.addEventListener('click', () => {
       const sku = item.parentNode.getAttribute('id')
       const product = dataSession.cart.getProduct(sku)
 
-      console.log(product)
+      // console.log(product)
 
-      dataSession.cart.deteleProduct(product)
+      console.log()
 
-      dataSession.postCart()
-
-      location.reload()
+      if (product.qty > 1) {
+        dataSession.cart.count--
+        product.qty--
+        dataSession.postCart()
+        location.reload()
+      } else {
+        dataSession.cart.deteleProduct(product)
+        dataSession.postCart()
+        location.reload()
+      }
     })
   })
 })

@@ -16,15 +16,41 @@
     <script rel="preload" type="module" src="../scripts/main.js" defer></script>
     <script rel="preload" type="module" src="../scripts/cart.js" defer></script>
 
+    <!-- *Library-->
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-minimal/minimal.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
     <!-- *Icons-->
     <script rel="preconnect" src="https://kit.fontawesome.com/3a008ef3f0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header id="header" class="header header-content container-alp"></header>
-
     <main id="cart" class="cart page-cart container-alp">
-
+        <h1 class="title">Carro de Producto</h1>
+        <section class="products-carts">
+            <ul class="list-products">
+            </ul>
+        </section>
+        <section class="resument-minicart">
+            <h3>Resumen</h3>
+            <ul class="list-resumen">
+                <li class="item-resument">
+                    <p>subtotal: <span class="subtotal">$8990</span></p>
+                </li>
+                <li class="item-resument">
+                    <p>Envio: <span class="shipping">$500</span></p>
+                </li>
+                <li class="item-resument">
+                    <p>Total: <span class="total">$3990</span></p>
+                </li>
+            </ul>
+            <form action="" method="post" id="form-shipping">
+                <input type="text" class="country" name="country" placeholder="Pais de compra">
+                <input type="submit" value="Guardar" class="button primary fill">
+            </form>
+            <button id="paymentOrden" class="button primary fill">Pagar</button>
+        </section>
     </main>
 </body>
 

@@ -1448,6 +1448,102 @@ label {
     display: none;
   }
 }
+#cart.page-cart {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+#cart.page-cart .title {
+  flex: 1 1 100%;
+  padding: 1rem 0;
+  padding-bottom: 0;
+}
+#cart.page-cart .products-carts {
+  flex: 1 1 70%;
+}
+#cart.page-cart .products-carts .list-products {
+  padding: 0;
+  list-style: none;
+}
+#cart.page-cart .products-carts .list-products .product .link {
+  display: flex;
+  gap: 1rem;
+  text-decoration: none;
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid #bfbfbf;
+}
+#cart.page-cart .products-carts .list-products .product .link .img-product {
+  max-width: 100px;
+}
+#cart.page-cart .resument-minicart {
+  flex: 1 1 25%;
+}
+#cart.page-cart .resument-minicart .list-resumen {
+  padding: 0;
+  list-style: none;
+  text-transform: capitalize;
+}
+#cart.page-cart .resument-minicart .list-resumen .item-resument p {
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+}
+#cart.page-cart .resument-minicart .list-resumen .item-resument p span {
+  font-weight: 400;
+}
+#cart.page-cart .resument-minicart #form-shipping {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+#cart.page-cart .resument-minicart #form-shipping .button {
+  min-width: auto;
+}
+
+.order-popup .order-container .title {
+  text-align: left;
+  color: #1a1a1a;
+}
+.order-popup .order-container .product-list,
+.order-popup .order-container .orden-Resument {
+  padding: 0;
+  color: #1a1a1a;
+  list-style: none;
+}
+.order-popup .order-container .product-list {
+  max-height: 460px;
+  overflow-y: scroll;
+}
+.order-popup .order-container .product-list .product {
+  display: flex;
+  gap: 1rem;
+  text-align: left;
+  text-decoration: none;
+}
+.order-popup .order-container .product-list .product .img-product {
+  max-width: 75px;
+}
+.order-popup .order-container .orden-Resument {
+  text-align: left;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.order-popup .order-container .orden-Resument .item {
+  display: flex;
+  justify-content: space-between;
+}
+.order-popup .order-container .orden-Resument .item .tag {
+  font-weight: 400;
+}
+.order-popup .order-actions {
+  margin: 0;
+  padding: 1rem 2rem;
+}
+
 .page-about .header,
 .page-contact .header {
   width: 100%;

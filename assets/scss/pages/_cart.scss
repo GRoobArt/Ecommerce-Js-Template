@@ -1,0 +1,102 @@
+#cart {
+  &.page-cart {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    .title {
+      flex: 1 1 100%;
+      padding: 1rem 0;
+      padding-bottom: 0;
+    }
+    .products-carts {
+      flex: 1 1 70%;
+      .list-products {
+        padding: 0;
+        list-style: none;
+        .product .link {
+          display: flex;
+          gap: 1rem;
+          text-decoration: none;
+          padding: 1rem 0.5rem;
+          border-bottom: 1px solid $color-gray-300;
+          .img-product {
+            max-width: 100px;
+          }
+        }
+      }
+    }
+    .resument-minicart {
+      flex: 1 1 25%;
+      .list-resumen {
+        padding: 0;
+        list-style: none;
+        text-transform: capitalize;
+        .item-resument p {
+          font-weight: 700;
+          display: flex;
+          justify-content: space-between;
+          span {
+            font-weight: 400;
+          }
+        }
+      }
+      #form-shipping {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1.2rem;
+        .button {
+          min-width: auto;
+        }
+      }
+    }
+  }
+}
+
+.order-popup {
+  .order-container {
+    .title {
+      text-align: left;
+      color: $color-black;
+    }
+
+    .product-list,
+    .orden-Resument {
+      padding: 0;
+      color: $color-black;
+      list-style: none;
+    }
+    .product-list {
+      max-height: 460px;
+      overflow-y: scroll;
+      .product {
+        display: flex;
+        gap: 1rem;
+        text-align: left;
+        text-decoration: none;
+        .img-product {
+          max-width: 75px;
+        }
+      }
+    }
+    .orden-Resument {
+      text-align: left;
+      font-size: 1.4rem;
+      font-weight: 700;
+      .item {
+        display: flex;
+        justify-content: space-between;
+        .tag {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  .order-actions {
+    margin: 0;
+    padding: 1rem 2rem;
+  }
+}

@@ -33,6 +33,10 @@ class Data {
   deleteUser() {
     localStorage.removeItem('user')
   }
+
+  deleteCart() {
+    localStorage.removeItem('cart')
+  }
 }
 
 export default Data

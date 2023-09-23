@@ -94,7 +94,10 @@ const modalAddProductSucces = () => {
     hideClass: {
       popup: 'animate__animated animate__fadeOutUp',
     },
-    timer: 1500,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      location.reload()
+    }
   })
 }
 
@@ -122,8 +125,4 @@ buttonAddCart.addEventListener('click', (e) => {
   dataSession.postCart()
 
   modalAddProductSucces()
-
-  setTimeout(() => {
-    location.reload()
-  }, '2000')
 })
