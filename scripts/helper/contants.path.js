@@ -15,7 +15,7 @@ const BRAND_IMAGES_PATH = `${IMAGES_PATH}brand/`
 const BRAND_BANNER_PATH = `${IMAGES_PATH}banners/`
 
 // Constantes de icons Path
-const ICONS_PATH = `${IMAGES_PATH}Icons/`
+const ICONS_PATH = `${IMAGES_PATH}icon/`
 
 export {
   URL_PATH,
