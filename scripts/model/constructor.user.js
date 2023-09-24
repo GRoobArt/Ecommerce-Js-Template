@@ -22,10 +22,6 @@ class User {
     this.token = token
   }
 
-  setToken(token) {
-    this.token = token
-  }
-
   async userLogin({ email, name, lastname, gender, birthday }) {
     const res = await fetch('https://reqres.in/api/login', {
       method: 'POST',
@@ -45,6 +41,10 @@ class User {
     this.fullname = `${name} ${lastname}`
     this.group = 'customer'
     this.setToken(data.token)
+  }
+
+  setToken(token) {
+    this.token = token
   }
 
   userlogOut() {

@@ -114,10 +114,14 @@ paymentOrden.addEventListener('click', (e) => {
       confirmButton: 'button primary fill',
     },
   }).then((res) => {
-    dataSession.deleteCart()
-
-    location.reload()
-
-    location.href = `${URL_PATH + NAME_PROYECT}`
+    if (res.isConfirmed) {
+      dataSession.deleteCart()
+      location.reload()
+      location.href = `${URL_PATH + NAME_PROYECT}`
+    } else {
+      dataSession.deleteCart()
+      location.reload()
+      location.href = `${URL_PATH + NAME_PROYECT}`
+    }
   })
 })

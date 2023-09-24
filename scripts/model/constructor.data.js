@@ -3,6 +3,7 @@ class Data {
     this.user = UserSession
     this.cart = CartSession
     this.categorie = catalogeProduct
+    this.user.id !== '' && this.postUser()
     this.categorie.products.length !== 0 && this.postCategorie()
   }
 
