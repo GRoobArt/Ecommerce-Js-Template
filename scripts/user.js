@@ -6,6 +6,7 @@ const sectionLogin = document.querySelector('#login')
 
 formLogin.addEventListener('submit', (e) => {
   e.preventDefault()
+
   const User = {
     email: e.target.email.value,
     name: e.target.firstname.value,
@@ -13,13 +14,10 @@ formLogin.addEventListener('submit', (e) => {
     gender: e.target.gender.options[e.target.gender.selectedIndex].value,
     birthday: e.target.birthday.value,
   }
-
   dataSession.user.userLogin(User)
-
   dataSession.postUser()
 
   sectionLogin.style.display = 'none'
-
   location.reload()
 })
 

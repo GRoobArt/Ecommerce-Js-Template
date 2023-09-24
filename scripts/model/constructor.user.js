@@ -9,6 +9,7 @@ class User {
     lastname = '',
     birthday = '',
     group = 'guest',
+    token = '',
   } = {}) {
     this.id = id ?? UUID()
     this.email = email
@@ -18,9 +19,24 @@ class User {
     this.birthday = birthday
     this.fullname = this.name + ' ' + this.lastname
     this.group = group
+    this.token = token
   }
 
-  userLogin({ email, name, lastname, gender, birthday }) {
+  setToken(token) {
+    this.token = token
+  }
+
+  async userLogin({ email, name, lastname, gender, birthday }) {
+    const res = await fetch('https://reqres.in/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: 'eve.holt@reqres.in',
+        password: 'cityslicka',
+      }),
+    })
+    const data = await res.json()
+
     this.email = email
     this.name = name
     this.lastname = lastname
@@ -28,6 +44,7 @@ class User {
     this.birthday = birthday
     this.fullname = `${name} ${lastname}`
     this.group = 'customer'
+    this.setToken(data.token)
   }
 
   userlogOut() {
@@ -36,6 +53,7 @@ class User {
     this.lastname = ''
     this.fullname = ''
     this.group = 'guest'
+    this.token = ''
   }
 }
 
